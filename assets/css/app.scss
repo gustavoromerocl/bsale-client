@@ -1,0 +1,11 @@
+@import "~bootstrap/scss/bootstrap"; 
+
+body {
+  box-sizing: border-box;
+}
+
+//Se corrige alineamiento de bootstrap en el form de busqueda
+.form-inline{
+  display: flex;
+  flex-direction: row;
+}
