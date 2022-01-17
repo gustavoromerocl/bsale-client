@@ -1,12 +1,17 @@
 const container = document.querySelector('#products');
 const form = document.querySelector('.form-inline');
+const load = document.querySelector('#cargando');
 
 let data = [];
 
 const fecthData = async function(){
-  let response =   await fetch('https://bsale-challenge.herokuapp.com/api/products').then((res) => res.json());
+  let response =   await fetch('https://bsale-challenge.herokuapp.com/api/products')
+    .then((res) => res.json())
+
   data = response;
 
+  if (data) load.style.display = 'none';
+  
   try{  
     data.map(({url_image, name, price}) => {
       //validamos que la imagen sea valida, para evitar hacer render de elementos incompletos
