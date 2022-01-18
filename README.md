@@ -5,7 +5,7 @@ Esta app se encuentra servida en el siguiente enlace de firebase \
 
 ### Arranque en entorno local
 
-1- Ingresar o posicionar tu terminal en la caperta raíz
+1- Ingresar o posicionar tu terminal en la caperta raíz \
 2- Ejecutaremos **npm install** para instalar las dependencias de node_modules  \
 3- Ejecutamos **npm run dev** para ejecutar el webpack server en [http://localhost:3000] \
 

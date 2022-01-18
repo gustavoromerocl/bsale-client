@@ -1,19 +1,20 @@
 const container = document.querySelector('#products');
 const form = document.querySelector('.form-inline');
 const load = document.querySelector('#cargando');
+const container_categories = document.querySelector('.dropdown-menu');
 
-let data = [];
+let products = [];
+let categories = [];
 
-const fecthData = async function(){
-  let response =   await fetch('https://bsale-challenge.herokuapp.com/api/products')
-    .then((res) => res.json())
+const fecthProductData = async function(){
+  let response =   await fetch('https://bsale-challenge.herokuapp.com/api/products').then((res) => res.json())
 
-  data = response;
+  products = response;
 
-  if (data) load.style.display = 'none';
+  if (products) load.style.display = 'none';
   
   try{  
-    data.map(({url_image, name, price}) => {
+    products.map(({url_image, name, price}) => {
       //validamos que la imagen sea valida, para evitar hacer render de elementos incompletos
       if(url_image) createCard(url_image, name, price)
       
@@ -24,33 +25,22 @@ const fecthData = async function(){
   }
 
 }
-//Se agreaga listener cuando el dom tiene los elementos cargados
-window.addEventListener('DOMContentLoaded', () => {
-  //se consume la api y se cargan los datos en el componente que crea la funcion createCard
 
-})
+/* Consume las categorias */
+const fetchCategoriesData = async function() {
+  let response =   await fetch('https://bsale-challenge.herokuapp.com/api/categories').then((res) => res.json())
 
-form.addEventListener('submit', async function(ev){
-  ev.preventDefault();
-  let inputValue = document.getElementById('search').value.toLowerCase();
+  categories = response;
 
-  let data = await fetch(`https://bsale-challenge.herokuapp.com/api/products/${inputValue}`).then((res) => res.json());
   try{
-    if(inputValue){
-      container.innerHTML = '';
-      data.map(({url_image, name, price}) => {
-        if(url_image) createCard(url_image, name, price)
-      });
-    }
-    else{
-    container.innerHTML = '<p>No se encontraron coincidencias</p>';
-    }
+    categories.map(({id, name}) => {
+      createCategory(name, name, id);
+    })
   }catch(err){
     alert(err);
   }
 
-});
-
+}
 
 //crea lo elementos necesarios en el dom con las clases de bootstrap
 function createCard(url_image, title, price){
@@ -73,7 +63,7 @@ function createCard(url_image, title, price){
   //agrando las clases de bootstrap
   container.classList.add('row','row-cols-1', 'row-cols-md-4', 'g-4');
   columnContainer.classList.add('col');
-  cardContainer.style.width = '15rem';
+  cardContainer.style.width = '18rem';
   cardContainer.style.marginRight = '1rem';
   cardContainer.classList.add('card');
   productImage.classList.add('card-img-top');
@@ -87,12 +77,70 @@ function createCard(url_image, title, price){
   precio.innerHTML = price;
 }
 
+
+/* Creando categorias */
+function createCategory(for_label, id_input, id){
+  let li = document.createElement('li');
+  let form = document.createElement('form');
+  let label = document.createElement('label');
+  let input = document.createElement('input');
+
+  label.classList.add('dropdown-item');
+  label.setAttribute('for', for_label);
+  label.innerHTML = for_label;
+  input.setAttribute('id', id_input);
+  input.style.display = 'none';
+  input.type = 'submit';
+
+  container_categories.appendChild(li);
+  li.appendChild(form);
+  form.appendChild(label);
+  form.appendChild(input);
+
+  /* Se añade listener a los form */
+  form.addEventListener('submit', async function(ev){
+    ev.preventDefault();
+    let data = await fetch(`https://bsale-challenge.herokuapp.com/api/categories/${id}`).then((res) => res.json())
+
+    try{
+      if(data){
+        container.innerHTML = '';
+        data.map(({url_image, name, price}) => {
+          if(url_image) createCard(url_image, name, price)
+        });
+      }
+      else{
+      container.innerHTML = '<p>No se encontraron coincidencias</p>';
+      }
+    }catch(err){
+      alert(err);
+    }
+  })
+}
+
+/* Listener del buscador */
+form.addEventListener('submit', async function(ev){
+  ev.preventDefault();
+  let inputValue = document.getElementById('search').value.toLowerCase();
+
+  let data = await fetch(`https://bsale-challenge.herokuapp.com/api/products/${inputValue}`).then((res) => res.json());
+  try{
+    if(inputValue){
+      container.innerHTML = '';
+      data.map(({url_image, name, price}) => {
+        if(url_image) createCard(url_image, name, price)
+      });
+    }
+    else{
+    container.innerHTML = '<p>No se encontraron coincidencias</p>';
+    }
+  }catch(err){
+    alert(err);
+  }
+
+});
+
 (function(){
-/*   fetch('http://localhost:8080/api/products').then((res) => res.json()).then((data) => {
-    data.map(({url_image, name, price}) => {
-      createCard(url_image, name, price)
-    });
-  }); */
-  fecthData();
-  
+  fecthProductData();
+  fetchCategoriesData();
 })();
