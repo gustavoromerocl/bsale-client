@@ -36,6 +36,7 @@ const buildProducts = (data) => {
 /* Cargamos las categorias */
 const buildCategories = (data) => {
   data.map(({id, name}) => {
+    console.log(name)
     let label = templatePill.querySelector('label');
     let input = templatePill.querySelector('input');
     label.textContent = name;

@@ -18,6 +18,11 @@ body {
   font-weight: bolder;
 }
 
+//Se capitalizan titulos de las categorias
+.dropdown-item{
+  text-transform: capitalize;
+}
+
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) { 
   .card {
