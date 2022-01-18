@@ -10,7 +10,7 @@ module.exports = merge(common, {
     children: true,
   },
   output:{
-    publicPath: '/'
+    publicPath: '.'
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -23,12 +23,6 @@ module.exports = merge(common, {
       {
         test: /\.(scss)$/,
         use: [{loader: MiniCssExtractPlugin.loader}, 'css-loader', 'sass-loader']
-      },
-      {
-        test: /\.html$/,
-        use:[
-          { loader: 'html-loader', options: {minimize:true}}
-        ]
       }
     ]
   }  

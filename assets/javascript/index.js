@@ -2,7 +2,6 @@ const container = document.querySelector('#products');
 const templateCard = document.getElementById('template-card').content;
 const templatePill = document.getElementById('template-pill').content;
 const fragment = document.createDocumentFragment();
-
 const form = document.querySelector('.form-inline');
 const load = document.querySelector('#cargando');
 const container_categories = document.querySelector('.dropdown-menu');
@@ -67,9 +66,10 @@ form.addEventListener('submit', function(ev){
 
 /* Listener de categorias */
 container_categories.addEventListener('click', async (ev) => {
+  /* Se corrige bug ya que el filtro ver todo funciona con el href del html, necesita recargar la pagina por lo que no le aplicamos ev.preventDefault */
+  if(ev.target.classList.contains('all')) return;
   ev.preventDefault();
   setFilter(ev);
-
 })
 
 const setFilter = async (ev) => {
