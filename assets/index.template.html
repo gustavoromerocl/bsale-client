@@ -12,14 +12,6 @@
   <div class="container-app">
     
     <!-- Navbar -->
-<!--     <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand">Bsale</a>
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </nav> -->
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">Bsale</a>
@@ -45,12 +37,36 @@
         </div>
       </div>
     </nav>
+
     <!-- Vista Productos -->
     <div class="container">
-      <div id="products" class="container"></div>
+      <div id="products" class="container row row-cols-1 row-cols-md-4 g-4"></div>
     </div>
     
+    
   </div>
+
   <div id="cargando" >Cargando...</div>
+
+  <template id="template-card">
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text"></p>
+          <button href="#" class="btn btn-dark">Comprar</button>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="template-pill">
+    <li>
+      <label for="" class="dropdown-item"></label>
+      <input type="button">
+    </li>
+  </template>
+
 </body>
 </html>
