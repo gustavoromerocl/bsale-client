@@ -22,6 +22,7 @@ const buildProducts = (data) => {
   data.map(({url_image, name, price, id}) => {
     //Validamos que la imagen exista
     if(url_image) {
+      templateCard.querySelector('.card').classList.add('zoomIn');
       templateCard.querySelector('h5').textContent = name;
       templateCard.querySelector('p').textContent = price;
       templateCard.querySelector('img').setAttribute('src', url_image);

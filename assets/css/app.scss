@@ -23,9 +23,31 @@ body {
   text-transform: capitalize;
 }
 
+.zoomIn {
+  animation: zoomIn 225ms;
+  animation-fill-mode: forwards; /*conserva el estado final*/
+  animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+}
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) { 
   .card {
     width: 15rem !important;
+  }
+}
+
+/* Animaciones */
+
+@keyframes zoomIn{
+  0%{ 
+    transform: scale(0);
+ 
+    opacity: 0;
+  }
+  40%{ 
+    opacity: 0.25;
+  }
+  100%{ 
+    transform: scale(1);
+    opacity: 1;
   }
 }
