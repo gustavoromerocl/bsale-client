@@ -28,6 +28,7 @@ body {
   animation-fill-mode: forwards; /*conserva el estado final*/
   animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
 }
+
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) { 
   .card {
