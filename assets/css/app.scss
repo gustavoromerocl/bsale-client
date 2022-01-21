@@ -34,6 +34,14 @@ body {
   .card {
     width: 15rem !important;
   }
+
+  .container-search{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 /* Animaciones */

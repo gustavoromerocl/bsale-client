@@ -116,7 +116,7 @@ const searchProduct = async function(){
   const data = await res.json();
   
   if (data.length === 0) {
-    container.innerHTML = '<div class="container"><p>No se encontraron coincidencias</p><div>';
+    container.innerHTML = '<div class="container-search"><p>No se encontraron coincidencias</p><div>';
   }else {
     cleanContainer();
     buildProducts(data);
