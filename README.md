@@ -106,6 +106,8 @@ firebase init
 **Ejecutar deploy:**
 firebase deploy --only hosting
 
+**URL del proyecto:** [https://bsale-client-594e1.web.app/]
+
 ### Wiki
 
 Integrar bootstrap en webpack:
