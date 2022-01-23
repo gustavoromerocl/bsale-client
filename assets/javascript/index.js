@@ -1,3 +1,5 @@
+
+
 const container = document.querySelector('#products');
 const templateCard = document.getElementById('template-card').content;
 const templatePill = document.getElementById('template-pill').content;
@@ -53,9 +55,12 @@ const cleanContainer = function(){
  * @param {string} uri Parametro que recibe el endpoint 
  * @param {function} callback Parametro que recibe una función para manipular los datos recibidos
  */
+
+ //https://bsale-challenge.herokuapp.com/
 const fetchData = async (uri, callback) => {
+  const host = 'http://localhost:8080';
   try {
-    const res = await fetch(`https://bsale-challenge.herokuapp.com/${uri}`);
+    const res = await fetch(`${host}/${uri}`);
     const data = await res.json();
     if (data) load.style.display = 'none';
     callback(data)
@@ -70,7 +75,7 @@ const fetchData = async (uri, callback) => {
  * @param {Array} data Parametro que recibe la respuesta del endpoint de productos
  */
 const buildProducts = (data) => {
-  data.map(({url_image, name, price, id}) => {
+  data.content.map(({url_image, name, price, id}) => {
     //Validamos que la imagen exista
     if(url_image) {
       templateCard.querySelector('.card').classList.add('zoomIn');
