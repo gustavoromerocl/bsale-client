@@ -1,0 +1,21 @@
+#navigation-pages {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 3rem 0rem;
+  height: 3rem;
+  width: 100%;
+    .container-page{
+      padding: 1rem;
+      color: inherit;
+      border-radius: .8em;
+    }
+    
+    .container-page:hover{
+      background-color: black;
+      color: white;
+    }
+}
+
+
+
