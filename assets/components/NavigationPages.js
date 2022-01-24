@@ -69,7 +69,7 @@ export class NavigationPages {
    * @returns total de paginas
    */
   countPages = async () => {
-    const res = await fetch(`http://localhost:8080/api/products`);
+    const res = await fetch(`https://bsale-challenge.herokuapp.com/api/products`);
     const data = await res.json();
 
     return data.totalPages;

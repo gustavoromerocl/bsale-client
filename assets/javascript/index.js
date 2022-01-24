@@ -76,7 +76,7 @@ const buildCategories = (data) => {
  */
 const searchProduct = async function(){
   let inputValue = document.getElementById('search').value.toLowerCase();
-  const host = 'http://localhost:8080'; //https://bsale-challenge.herokuapp.com/
+  const host = 'https://bsale-challenge.herokuapp.com'; //https://bsale-challenge.herokuapp.com/
 
   let res = await fetch(`${host}/api/products/${inputValue}`);
   const data = await res.json();
@@ -99,7 +99,7 @@ const searchProduct = async function(){
  * @param {event} ev Parametro que recibe el evento del listener
  */
 const setFilter = async (ev) => {
-  const host = 'http://localhost:8080'; //https://bsale-challenge.herokuapp.com/
+  const host = 'https://bsale-challenge.herokuapp.com'; //https://bsale-challenge.herokuapp.com/
   const res = await fetch(`${host}/api/categories/${ev.target.dataset.id}`)
   const data = await res.json();
   console.log(data);

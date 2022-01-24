@@ -12,7 +12,7 @@ const fragment = document.createDocumentFragment();
 //https://bsale-challenge.herokuapp.com/
 export const fetchData = async (uri, callback) => {
   const load = document.querySelector('#cargando');
-  const host = 'http://localhost:8080';
+  const host = 'https://bsale-challenge.herokuapp.com';
   try {
     const res = await fetch(`${host}/${uri}`);
     const data = await res.json();
