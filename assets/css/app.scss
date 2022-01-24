@@ -1,5 +1,7 @@
 @import "~bootstrap/scss/bootstrap"; 
 
+
+
 body {
   box-sizing: border-box;
 }
@@ -29,8 +31,29 @@ body {
   animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
+.container-app {
+  height: 150vh;
+}
+
+.container-body{
+  height: 100%;
+
+}
+
+#products {
+  height:  90%;
+}
+
+.selected-page{
+  background-color: black!important;
+  color: white;
+  border-radius: .8em;
+}
+
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) { 
+
+
   .card {
     width: 15rem !important;
   }
