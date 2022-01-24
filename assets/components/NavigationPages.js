@@ -38,7 +38,7 @@ export class NavigationPages {
       this.selector.classList.add('selected-page');
       
       cleanContainer();
-      fetchData(`api/products?page=${this.currentPage - 1}`, buildProducts)
+      fetchData(`api/products?page=${this.currentPage}`, buildProducts)
     }
   }
 
